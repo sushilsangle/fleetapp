@@ -22,7 +22,7 @@ public class States {
     private String capital;
     private String code;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "countryid", insertable = false, updatable = false)
     private Country country;
 
