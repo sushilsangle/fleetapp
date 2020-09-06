@@ -23,31 +23,31 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class VehicleMaintenance extends Auditable<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name="id")
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "vehicleid",insertable = false,updatable = false)
+    @JoinColumn(name="vehicleid", insertable=false, updatable=false)
     private Vehicle vehicle;
-    private Vehicle vehicleid;
+    private Integer vehicleid;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
 
     private String price;
 
     @ManyToOne
-    @JoinColumn(name = "supplierid",insertable = false,updatable = false)
+    @JoinColumn(name="supplierid", insertable=false, updatable=false)
     private Supplier supplier;
-    private Supplier supplierid;
+    private Integer supplierid;
 
     private String remarks;
 
