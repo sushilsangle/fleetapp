@@ -1,12 +1,19 @@
 package com.sushils.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,27 +24,26 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name="id")
     private int id;
 
     private String name;
     private String address;
+    private String city;
     private String phone;
     private String mobile;
-    private String email;
-    private String city;
     private String website;
+    private String email;
 
     @ManyToOne
-    @JoinColumn(name = "countryid", insertable = false, updatable = false)
+    @JoinColumn(name="countryid", insertable=false, updatable=false)
     private Country country;
     private Integer countryid;
 
-
     @ManyToOne
-    @JoinColumn(name = "statesid", insertable = false, updatable = false)
-    private States states;
-    private Integer statesid;
+    @JoinColumn(name="stateid", insertable=false, updatable=false)
+    private States state;
+    private Integer stateid;
 
     private String details;
 }
